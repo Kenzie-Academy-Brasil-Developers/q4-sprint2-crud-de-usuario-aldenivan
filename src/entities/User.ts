@@ -17,9 +17,9 @@ export class User {
   @Column()
   isAdm: boolean;
 
-  @Column({ default: Date() })
-  createadOn: string;
+  @Column({ default: new Date() })
+  createadOn: Date;
 
-  @Column({ default: Date() })
-  updateadOn: string;
+  @Column({ default: new Date() })
+  updateadOn: Date;
 }
