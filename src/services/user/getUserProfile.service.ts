@@ -1,8 +1,9 @@
 import { Request } from "express";
-import { IUser, UserRepository } from "../../repositories";
+import { User } from "../../entities/User";
+import { UserRepository } from "../../repositories";
 
 const getUserProfileService = async (req: Request) => {
-  const user: IUser = await new UserRepository().findByEmail(req.email);
+  const user: User = await new UserRepository().findByEmail(req.email);
 
   if (!user) {
     return undefined;

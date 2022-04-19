@@ -1,13 +1,14 @@
 import { Request } from "express";
-import { IUser, UserRepository } from "../../repositories";
+import { UserRepository } from "../../repositories";
 import { configs } from "../../configs";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { User } from "../../entities/User";
 
 const loginUserService = async (req: Request) => {
   const { email, password } = req.body;
 
-  const user: IUser = await new UserRepository().findByEmail(email);
+  const user: User = await new UserRepository().findByEmail(email);
 
   if (!user) {
     return undefined;

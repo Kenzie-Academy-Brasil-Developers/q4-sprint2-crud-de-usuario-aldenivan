@@ -1,21 +1,12 @@
 import { DeleteResult } from "typeorm";
-
-interface IUser {
-  uuid: string;
-  name: string;
-  email: string;
-  password: string;
-  isAdm: boolean;
-  createadOn: string;
-  updateadOn: string;
-}
+import { User } from "../../entities/User";
 
 interface IUserRepo {
-  saveUser: (user: IUser) => Promise<IUser>;
-  findUser: () => Promise<IUser[]>;
-  findByEmail: (email: string) => Promise<IUser>;
-  findByUuid: (uuid: string) => Promise<IUser>;
-  deleteUser: (user: IUser) => Promise<DeleteResult>;
+  saveUser: (user: User) => Promise<User>;
+  findUser: () => Promise<User[]>;
+  findByEmail: (email: string) => Promise<User>;
+  findByUuid: (uuid: string) => Promise<User>;
+  deleteUser: (user: User) => Promise<DeleteResult>;
 }
 
-export { IUser, IUserRepo };
+export { IUserRepo };

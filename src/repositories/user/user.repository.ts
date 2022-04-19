@@ -1,6 +1,6 @@
-import { Repository, getRepository, DeleteResult } from "typeorm";
+import { Repository, getRepository } from "typeorm";
 import { User } from "../../entities/User";
-import { IUser, IUserRepo } from "./interface";
+import { IUserRepo } from "./interface";
 
 class UserRepository implements IUserRepo {
   private ormRepository: Repository<User>;
@@ -9,7 +9,7 @@ class UserRepository implements IUserRepo {
     this.ormRepository = getRepository(User);
   }
 
-  saveUser = async (user: IUser) => await this.ormRepository.save(user);
+  saveUser = async (user: User) => await this.ormRepository.save(user);
   findUser = async () => await this.ormRepository.find();
   findByEmail = async (email: string) => {
     return await this.ormRepository.findOne({ where: { email } });
@@ -17,9 +17,9 @@ class UserRepository implements IUserRepo {
   findByUuid = async (uuid: string) => {
     return await this.ormRepository.findOne({ where: { uuid } });
   };
-  deleteUser = async (user: IUser) => {
+  deleteUser = async (user: User) => {
     return await this.ormRepository.delete(user);
   };
 }
 
-export { UserRepository, IUser };
+export { UserRepository };

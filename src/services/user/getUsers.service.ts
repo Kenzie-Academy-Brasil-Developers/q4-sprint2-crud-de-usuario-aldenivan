@@ -1,7 +1,8 @@
-import { IUser, UserRepository } from "../../repositories";
+import { User } from "../../entities/User";
+import { UserRepository } from "../../repositories";
 
 const getUsersService = async () => {
-  const users: IUser[] = await new UserRepository().findUser();
+  const users: User[] = await new UserRepository().findUser();
 
   return users;
 };
